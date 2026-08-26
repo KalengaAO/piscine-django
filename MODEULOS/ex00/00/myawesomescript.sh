@@ -11,4 +11,4 @@ case "$URL" in
     *) URL="https:://$URL";;
 esac
 
-curl -s -D - $URL | grep "location | cut -d' ' -f2
+curl -s -D - $URL | grep "location" | cut -d' ' -f2
