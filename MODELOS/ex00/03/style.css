@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/css?family=Expletus+Sans);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 50px auto 0;
+    max-width: 800px;
+    font-family: "Expletus Sans", sans-serif;
+}
+
+li {
+    width: 50%;
+    float: left;
+    list-style-type: none;
+    padding-right: 5.3333333%;
+}
+
+h2 {
+    margin: 0 0 1.5em;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 .25em;
+}
+
+progress:not([value]) { }
+
+progress[value] {
+    appearance: none;
+    border: none;
+    width: 100%;
+    height: 20px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 5);
+    color: royalblue;
+    position: relative;
+    margin: 0 0 1.5em;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 5);
+}
