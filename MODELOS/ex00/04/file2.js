@@ -1,0 +1,5 @@
+function cat() {
+    whale();
+}
+
+cat()
