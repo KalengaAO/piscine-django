@@ -12,7 +12,7 @@ def read_periodic_table(filename) -> list[dict]:
 
 
 def write_td(file, element) -> None:
-    file.write('<td style="border: 1px solid black; padding:  10px;">\n')
+    file.write('<td>\n')
     file.write(f'<h4>{element["name"]}</h4>\n')
     file.write('<ul>\n')
     file.write(f'<li>No {element["number"]}</li>\n')
@@ -26,8 +26,12 @@ def write_html(elements) -> None:
     with open("./periodic_table.html", "w") as file:
         file.write('<!DOCTYPE html>\n')
         file.write('<html lang="en">\n')
-        file.write('<head><title>Periodic table HTML</title></head>\n')
+        file.write('<head><title>Periodic table HTML</title>\n')
+        file.write('<link rel="stylesheet" type="text/css" href="style.css">\n</head>')
         file.write('<body>\n<table>\n')
+
+        with open("./style.css", 'w') as style:
+            style.write('td { border: 1px solid black; padding:  10px; }')
 
         for index, element in enumerate(elements):
             position = int(element['position'])
@@ -38,7 +42,7 @@ def write_html(elements) -> None:
             if index + 1 < len(elements):
                 next_position = int(elements[index  + 1]["position"])
                 if next_position != 0 and position + 1 != next_position:
-                    file.write(f'<td colspan={next_position - position - 1} style="border: 0px;"></td>\n')
+                    file.write(f'<td colspan={next_position - position - 1} style="border: 0px"></td>\n')
 
             if position == 17:
                 file.write('<tr>\n')
