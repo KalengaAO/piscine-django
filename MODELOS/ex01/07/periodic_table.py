@@ -12,7 +12,7 @@ def read_periodic_table(filename) -> list[dict]:
 
 
 def write_td(file, element) -> None:
-    file.write('<td>\n')
+    file.write(f'<td id=color{element["position"]}>\n')
     file.write(f'<h4>{element["name"]}</h4>\n')
     file.write('<ul>\n')
     file.write(f'<li>No {element["number"]}</li>\n')
@@ -31,7 +31,16 @@ def write_html(elements) -> None:
         file.write('<body>\n<table>\n')
 
         with open("./style.css", 'w') as style:
-            style.write('td { border: 1px solid black; padding:  10px; }')
+            style.write('td { border: 1px solid black; padding:  10px; }\n')
+            style.write('#color0, #color1 { background-color: lime; }\n')
+            style.write('#color2, #color3, #color4, #color5, \
+                    #color6, #color7, #color8, #color9, #color10, \
+                    #color11 { background-color: aqua; }\n')
+
+            style.write('#color12, #color13, #color14, \
+            #color15, #color16 { background-color: yellow; }\n')
+            style.write('#color17 { background-color: orange; }\n')
+         
 
         for index, element in enumerate(elements):
             position = int(element['position'])

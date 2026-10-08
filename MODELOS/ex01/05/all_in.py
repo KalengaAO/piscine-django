@@ -12,7 +12,6 @@ def print_capital_city(state):
     found = False
     for state_key, state_value in states.items():
         if state.lower() == state_key.lower():
-            # print(state_key, "is a state")
             print(capital_cities[state_value], "is the capital of", state_key)
             found = True
             break
