@@ -7,7 +7,7 @@ ALLOWED_TAGS = (H1, H2, Body, Div, Elem, Head, Hr, Html, Img,
 
 HTML_CONTENT = (Head, Body)
 HEAD_CONTENT = (Title)
-BODY_CONTENT = DIV_CONTENT = (H1, H2, Div, Table, Ul, Ol, Span, Text)
+BODY_CONTENT = DIV_CONTENT = (H1, H2, Div, Table, Ul, Ol, Span, Text, P)
 TITLE_CONTENT = H1_CONTENT = H2_CONTENT = LI_CONTENT = TH_CONTENT = TD_CONTENT = P_CONTETN = (Text)
 SPAC_CONTENT = (Text, P)
 UL_CONTENT = OL_CONTENT = (Li)
@@ -42,8 +42,8 @@ class Page:
         return result
     
     def write_to_file(self, path):
-        f = open(path, w)
-        f.write(self.__str__())
+        with open(path, 'w') as file:
+            file.write(self.__str__())
 
     def is_valid(self):
         return self.__recursive_check(self.elem)
@@ -69,20 +69,17 @@ class Page:
                     return True
             else:
                 self.error_msg = (f"{elem.tag} tag must striclty contain a Head, then a Body")
-
         elif isinstance(elem, Head):
             if [isinstance(e, Title) for e in elem.content].count(True) == 1:
-                if self.check_subelem(elem):
-                    return True
-                else:
-                    self.error_msg = (f"{elem.tag} Tag Head must only contain one Title and at least a Title")
-
+                return True
+            else:
+                self.error_msg = (f"{elem.tag} Tag Head must only contain one Title and at least a Title")
+                
         elif isinstance(elem, (Body, Div)):
             if self.check_subelem(elem, BODY_CONTENT) and self.check_subelem(elem):
                 return True
             else:
-                self.error_msg = (f"{eleme.tag} tag must only contain the following typw of elements: "\
-                                "h1, h2, Div, Table, ul, ol, span or text")
+                self.error_msg = (f"{elem.tag} tag must only contain the following type of elements: {BODY_CONTENT}")
 
         elif isinstance(elem, (Title, H1, H2, Li, Th, Th, Td)):
             if len(elem.content) == 1 and isinstance(elem.content[0], Text):
@@ -115,11 +112,11 @@ class Page:
                 self.error_msg = (f"{elem.tag} tag must only contain Tr and only some Tr.")
         return False
 
-        def is_valid_tr(self, elem):
-            if not (len(elem.content) > 0 and all(isinstance(e, (Th, Td)) for e in elem.content)):
-                self.error_msg = (f"{elem.tag} tag must contain at least one Th or Td and only some Th or Td. "\
-                    "The Th and the Td must be mutually exclusive.")
-                return False
+    def is_valid_tr(self, elem):
+        if not (len(elem.content) > 0 and all(isinstance(e, (Th, Td)) for e in elem.content)):
+            self.error_msg = (f"{elem.tag} tag must contain at least one Th or Td and only some Th or Td. "\
+                "The Th and the Td must be mutually exclusive.")
+            return False
 
             th_elements = [e for e in elem.content if isinstance(e, Th)]
             td_elements = [e for e in elem.content if isinstance(e, Td)]
@@ -132,5 +129,10 @@ class Page:
 
 
 if __name__ == "__main__":
-    print(Page(Html([Head([Meta(), Title(Text("first page")), Title()]), \
-    Body(H1(Text("My first page em python")))])))
+    first_pag = Page(Html([Head([Meta(), Title(Text("first page"))]), \
+    Body([H1(Text("My first pag html by python")), P(Text("não deve gerar um erro"))])]))
+
+    if not first_pag.is_valid():
+        print(first_pag.error_msg)
+    else:
+        first_pag.write_to_file("./index.html")
