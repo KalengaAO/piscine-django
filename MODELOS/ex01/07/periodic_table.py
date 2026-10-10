@@ -4,8 +4,8 @@ def read_periodic_table(filename) -> list[dict]:
     elements = []
     with open(filename, "r") as file:
         for line in file:
-            name, properpeties = line.strip().split(" = ")
-            properpeties = dict(prop.strip().split(":") for prop in properpeties.split(",")) 
+            name, properpeties = line.strip().(" = ")
+            properpeties = dict(prop.strip().(":") for prop in properpeties.(",")) 
             properpeties['name'] = name
             elements.append(properpeties)
     return elements
