@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    The django template allows dynamic content generation. Key features include:
+    <ul>
+        <li><strong>Blocks:</strong> Define placeholders in the base template that child templates can overide.</li>
+        <li><strong>Loops:</strong> Iterate over lists or dictionaries using {% for item in list %} {% endfor %}</li>
+        <li><strong>If Control Structres:</strong> Use {% if condition %} to conditionally render content.{% endif %}</li>
+        <li><strong>Context variables:</strong> Pass data from views to templates for display using {{ variable }}</li>
+    </ul>
+</p>
+{% endblock %}

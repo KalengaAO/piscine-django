@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Default title{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            {% include 'ex01/nav.html' %}
+            <h1>{{ title }}</h1>
+        </header>
+        <main>
+            
+            <div>
+                {% block content %}
+                {% endblock%}
+            </div>
+        </main>
+    </body>
+</html>

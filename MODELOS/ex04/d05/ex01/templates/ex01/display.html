@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    When a user requests a static page in a Django applications:
+
+    <ol>
+        <li>The user's bowser sends a HTTP reqeust to the server.</li>
+        <li>Django's URL dispatcher checks the requested URL against the URL patterns defined in `urls.py`.</li>
+        <li>If a matching URL pattern is found, the associated view function is called.</li>
+        <li>The view function renders a template (HTML file) using the Django template engine.</li>
+        <li>The rendered HTML is returned as an HTTP response to the user's browser.</li>
+        <li>The browser receives the HTML and displays it to the user.</li>
+    </ol>
+</p>
+{% endblock %}
