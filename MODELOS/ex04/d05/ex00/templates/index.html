@@ -1,18 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
-    <title>{{title}} </title>
+    <title>{{title}}</title>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    {% endblock %}
 </head>
 
 <body>
     <header>
-        <h1>{{header}}</h1>
+        <h1>{{ header }}</h1>
     </header>
     <main>
         <h2>Headers</h2>
-        <p>#H1 <br>## H2<br>### H3<br>#### H4<br>##### H5<br>###### <br></p>
+        <p>#H1 <br>## H2<br>### H3<br>#### H4<br>##### H5<br>###### H6<br></p>
         <h2>Emphasis</h2>
         <p>*Italics* or _Italics_<br> **Bold** or _Bold_<br>**Bold Italics** or _Bold Italic_</p>
         <h2>Lists</h2>
@@ -37,8 +40,9 @@
         <p>Use a backslash \ to escape characters like *, _, #, etc.</p>
 
         <h2>Tables</h2>
-        <pre><code>| Header 1 | Header 2 |
-        | -------- | -------- |
+        <pre><code>
+        |   Header 1   |   Header 2   |
+        |   --------   |   --------   |
         | Row 1, Col 1 | Row 1, Col 2 |
         | Row 2, Col 1 | Row 2, Col 2 |
         </code></pre>

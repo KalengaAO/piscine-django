@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ex02: Primeiro formulário</title>
+    </head>
+    <body>
+        <header>
+            <h1>Ex02: Primeiro formulário</h1>
+        </header>
+        <main>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Send</button>
+            </form>
+            <h2>Entry History</h2>
+            <ul>
+                {% for entry in history %}
+                <li>{{ entry }}</li>
+                {% empty %}
+                <li>No entry</li>
+                {% endfor %}
+            </ul>
+        </main>
+        </body>
+</html>

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+{% endblock %}
 {% block content %}
 <p>
     The django template allows dynamic content generation. Key features include:

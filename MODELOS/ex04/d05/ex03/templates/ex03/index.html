@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fifty gradient</title>
+        <style>
+            table {
+                text-align: center;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                width: 80px;
+                height: 40px;
+                border-color: 1px black;
+            }
+        </style>
+    </head>
+    <body>
+        <header><h1>Fiftyt gradient</h1></header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Black</th>
+                        <th>Red</th>
+                        <th>Green</th>
+                        <th>Blue</th>
+                    </tr>
+                </thead>
+                {% for row in gradient %}
+                <tbody>
+                    <tr>
+                        {% for color in row %}
+                        <td style="background-color: rgb({{color}});"></td>
+                        {% endfor%}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </main>
+    </body>
+
+</html>
