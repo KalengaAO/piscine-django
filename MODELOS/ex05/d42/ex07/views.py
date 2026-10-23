@@ -138,6 +138,6 @@ def update(request):
 
                 return redirect("update")
         form = forms.updateForm()
-        return render(request, "ex07/index.html", {'form': form})
+        return render(request, "ex07/index.html", {'form': form, 'title': 'Update movies',})
     except Exception as error:
         return HttpResponse(f"Error: {error}")
