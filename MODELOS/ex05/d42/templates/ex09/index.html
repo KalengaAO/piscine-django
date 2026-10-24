@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ title }}</title>  
+{% endblock %}
+
+{% block header %}
+<h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+<table  border="2" style="border-collapse: collapse; text-align: center;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Climate</th>
+            <th>Homeworld</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in people %}
+        <tr>
+            <td>{{ p }}</td>
+            <td>{{ p }}</td>
+            <td>{{ p }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

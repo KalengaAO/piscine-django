@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ title }}</title>
+{% endblock %}
+
+{% block header %}
+<h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="get">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Pesquisar</button>
+</form>
+
+<h2>Results:</h2>
+{% if result is not None %}
+<table border="1" style="border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th>Movie Title</th>
+            <th>Character Name</th>
+            <th>Gender</th>
+            <th>Homeworld Name</th>
+            <th>Homeworld Diameter</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in result %}
+        {% for person in movie.characters.all %}
+        <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.gender }}</td>
+                <td>{{ person.homeworld.name }}</td>
+                <td>{{ person.homeworld.diameter }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nothing corresponding to your research </p>
+    {% endif %}
+{% endblock %}
