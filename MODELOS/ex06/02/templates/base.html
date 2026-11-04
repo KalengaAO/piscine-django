@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+        {% endblock %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            {% block head %}
+            <nav>
+                <p id="hello">
+                    <a href="{% url 'main' %}">
+                        {% if request.user.username %}
+                            Hello {{ request.user.username }} !
+                        {% else %}
+                            Hello {{ request.COOKIES.username }} !
+                        {% endif %}
+                    </a>
+                </p>
+                    <ul>
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    {% else %}
+                    <li><a href="/logout">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endblock %}
+        </header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

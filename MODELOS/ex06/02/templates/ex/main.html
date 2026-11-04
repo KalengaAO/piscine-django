@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    {% if request.user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Tip</button>
+    </form>
+        {% if tip %}
+        {% for t in tip %}
+        <p>By {{ t.author }}: {{ t.date }} </p>
+        <p>{{ t.content }}</p>
+        {% endfor %}
+        {% endif %}
+    {% else %}
+    <h2>Django is framework web based in Python!</h2>
+    {% endif %}
+</div>
+{% endblock %}
