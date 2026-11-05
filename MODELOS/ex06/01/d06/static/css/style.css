@@ -1,0 +1,38 @@
+@import url('https://googleapis.com');
+
+body {
+    background-color: whitesmoke;
+    font-family: 'Righteous', Tahoma;
+    width: 80%;
+    height: 50%;
+}
+
+#main {
+    padding: 10%;
+}
+
+nav {
+    border-bottom: 1px solid gray;
+}
+
+a {
+    color: rgb(87, 124, 158);
+    text-decoration: none;
+}
+
+#content {
+    color: gray;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid;
+    border-radius: 15px;
+    color: gray;
+    background-color: white;
+}
+
+button:hover {
+    color: white;
+    background-color: gray;
+}

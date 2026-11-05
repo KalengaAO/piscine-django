@@ -18,3 +18,10 @@ a {
     text-decoration: none;
     color: rgb(3, 93, 166);
 }
+
+button {
+    border: 1px solid gray;
+    padding: 15px 20px;
+    color: gray;
+    background-color: whitesmoke;
+}

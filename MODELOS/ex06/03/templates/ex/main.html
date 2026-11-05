@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>home</title>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<form method="post">
+    {% csrf_token %}
+    {{ tips.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% if tips_content %}
+{% for tips in tips_content %}
+    <p>By: {{ tips.author }} - {{ tips.date }}</br>
+    content: <em>{{ tips.content }}</em></p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="up" value="{{tips.pk}}">
+            {{ tips.upvotes.count }}</button>
+        <button type="submit" name="down" value="{{tips.pk}}">
+            {{ tips.downvotes.count }}
+        </button>
+        <button type="submit" name="delete" value="{{tips.pk}}">
+            Delete
+        </button>
+    </form>
+{% endfor %}
+{% endif %}
+{% endif %}
+
+{% endblock %}

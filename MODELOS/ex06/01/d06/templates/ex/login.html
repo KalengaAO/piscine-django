@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block head %}
+<h1>Hello {{ request.COOKIES.username }} !</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button class="btn btn-outline-dark"  type="submit">Getting</button>
+</form>
+{% endblock %}

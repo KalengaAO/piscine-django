@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+body {
+    padding: 60px 130px;
+    width: 600px;
+    background-color: whitesmoke;
+    color: rgb(44, 44, 44);
+    font-family: 'Roboto';
+}
+
+a {
+    text-decoration: none;
+    color: rgb(2, 136, 233);
+}
+
+#content  {
+    border-top: 1px solid gray;
+}
+
+
+button {
+    padding: 10px 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: whitesmoke;
+}
+
+button:hover {
+    color: white;
+    background-color: gray;
+}
